@@ -338,7 +338,7 @@ abstract class Transporter {
                         $errno,
                         $errstr,
                         $timeout,
-                        STREAM_CLIENT_CONNECT | STREAM_CLIENT_PERSISTENT,
+                        STREAM_CLIENT_CONNECT,
                         stream_context_create($client->options)
                     );
                 }
