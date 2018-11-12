@@ -328,7 +328,7 @@ abstract class Transporter {
         $errstr = '';
         while ($trycount <= 1) {
             $scheme = parse_url($client->uri, PHP_URL_SCHEME);
-            if ($this->stream === null) {
+            if ($this->stream === null || !is_resource($this->stream)) {
                 if ($scheme == 'unix') {
                     $this->stream = pfsockopen('unix://' . parse_url($client->uri, PHP_URL_PATH));
                 }
