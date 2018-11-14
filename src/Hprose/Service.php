@@ -96,10 +96,10 @@ abstract class Service extends HandlerManager {
     }
 
     public function errorHandler($errno, $errstr, $errfile, $errline) {
-        if (self::$trackError) {
-            self::$lastError = new ErrorException($errstr, 0, $errno, $errfile, $errline);
-        } else if (self::$_lastErrorHandler){
+        if (self::$_lastErrorHandler){
             call_user_func(self::$_lastErrorHandler, $errno, $errstr, $errfile, $errline);
+        } else if (self::$trackError) {
+            self::$lastError = new ErrorException($errstr, 0, $errno, $errfile, $errline);
         }
     }
 
